@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcib7rr10n8py"]
+
+[ext_resource type="Texture2D" uid="uid://s1tuxnuepoda" path="res://assets/art/tiles/particles/smoke_04.png" id="1_g831y"]
+[ext_resource type="Script" path="res://scripts/powers/steam_jet.gd" id="1_lvc8n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqnkf"]
+size = Vector2(20, 92)
+
+[node name="SteamJet" type="Area2D"]
+top_level = true
+scale = Vector2(2, 2)
+script = ExtResource("1_lvc8n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -46)
+shape = SubResource("RectangleShape2D_sqnkf")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 35
+lifetime = 0.5
+randomness = 0.11
+lifetime_randomness = 0.25
+local_coords = true
+texture = ExtResource("1_g831y")
+spread = 2.65
+gravity = Vector2(0, -800)
+angular_velocity_min = -720.0
+angular_velocity_max = 498.82
+radial_accel_min = -75.82
+radial_accel_max = 86.27
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+angle_min = -691.8
+angle_max = 710.6
+scale_amount_min = 0.02
+scale_amount_max = 0.03
+color = Color(0.517647, 0.933333, 0.94902, 0.984314)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8nu0fqgdplq"]
+
+[ext_resource type="Texture2D" uid="uid://c4ds4ftgdsbjk" path="res://assets/art/tiles/particles/twirl_01.png" id="1_2k0mk"]
+[ext_resource type="Script" path="res://scripts/powers/whirlpool.gd" id="1_vhfwh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vhlmj"]
+radius = 56.1427
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nkr75"]
+
+[sub_resource type="Curve" id="Curve_onu2x"]
+min_value = -3.0
+_data = [Vector2(0.0168539, 0.967033), 0.0, 0.0, 0, 0, Vector2(0.533708, 0.428571), 0.0, 0.0, 0, 0, Vector2(0.994382, -0.010989), -2.48055, 0.0, 0, 0]
+point_count = 3
+
+[node name="Whirlpool" type="Area2D"]
+top_level = true
+script = ExtResource("1_vhfwh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_vhlmj")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_nkr75")
+amount = 25
+lifetime = 3.0
+randomness = 1.0
+texture = ExtResource("1_2k0mk")
+spread = 0.0
+gravity = Vector2(0, 0)
+angular_velocity_min = 116.36
+angular_velocity_max = 589.09
+scale_amount_min = 0.23
+scale_amount_max = 0.23
+scale_amount_curve = SubResource("Curve_onu2x")
+color = Color(0, 0.47451, 0.694118, 1)
+hue_variation_min = 0.18
+hue_variation_max = 0.18
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

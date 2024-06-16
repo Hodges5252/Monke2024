@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7vuj8ryysff0"]
+
+[ext_resource type="Script" path="res://scripts/powers/mudslide.gd" id="1_cd1qs"]
+[ext_resource type="Texture2D" uid="uid://17gw7ja6fltv" path="res://assets/art/tiles/particles/dirt_03.png" id="1_jlai7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ishr"]
+size = Vector2(52, 46)
+
+[node name="Mudslide" type="Area2D"]
+top_level = true
+scale = Vector2(2, 2)
+script = ExtResource("1_cd1qs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -23)
+shape = SubResource("RectangleShape2D_8ishr")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -23)
+emitting = false
+amount = 100
+lifetime = 30.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_jlai7")
+emission_shape = 3
+emission_rect_extents = Vector2(26.06, 20.575)
+gravity = Vector2(0, 0)
+linear_accel_min = 775.25
+linear_accel_max = 921.6
+scale_amount_min = 0.02
+scale_amount_max = 0.02
+color = Color(0.21089, 0.141777, 0.0858016, 1)
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

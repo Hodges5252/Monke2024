@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://cibluhayl1kmn"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_kx6nk"]
+[ext_resource type="Texture2D" uid="uid://cbjunbufq88k5" path="res://assets/art/sprites/MutilatedStumbler.png" id="2_hxw7g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brg6s"]
+atlas = ExtResource("2_hxw7g")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiuec"]
+atlas = ExtResource("2_hxw7g")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pjoe"]
+atlas = ExtResource("2_hxw7g")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvvq8"]
+atlas = ExtResource("2_hxw7g")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j6yog"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brg6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiuec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pjoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvvq8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lkrep"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8va7f"]
+radius = 123.004
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_kx6nk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_j6yog")
+autoplay = "default"
+frame_progress = 0.579314
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_lkrep")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8va7f")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

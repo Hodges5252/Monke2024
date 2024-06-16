@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkwlait11xtlk"]
+
+[ext_resource type="Script" path="res://scripts/powers/earthquake.gd" id="1_0s7d5"]
+[ext_resource type="Texture2D" uid="uid://17gw7ja6fltv" path="res://assets/art/tiles/particles/dirt_03.png" id="1_p41q5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ishr"]
+size = Vector2(52, 46)
+
+[sub_resource type="Gradient" id="Gradient_8cewt"]
+offsets = PackedFloat32Array(0.937984, 1)
+colors = PackedColorArray(0.211765, 0.239216, 0.247059, 1, 1, 1, 1, 0)
+
+[node name="Earthquake" type="Area2D"]
+top_level = true
+scale = Vector2(2, 2)
+script = ExtResource("1_0s7d5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -23)
+shape = SubResource("RectangleShape2D_8ishr")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -23)
+emitting = false
+amount = 50
+lifetime = 30.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_p41q5")
+emission_shape = 1
+emission_sphere_radius = 25.75
+gravity = Vector2(0, 0)
+orbit_velocity_min = 0.3
+orbit_velocity_max = 0.4
+linear_accel_min = 775.25
+linear_accel_max = 921.6
+scale_amount_min = 0.05
+scale_amount_max = 0.05
+color = Color(0.211694, 0.240405, 0.24519, 1)
+color_ramp = SubResource("Gradient_8cewt")
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

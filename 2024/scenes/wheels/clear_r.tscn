@@ -1,0 +1,175 @@
+[gd_scene load_steps=12 format=3 uid="uid://8wywdv6spw3d"]
+
+[ext_resource type="Texture2D" uid="uid://ishs61yie1v4" path="res://assets/art/sprites/ClearWheel.png" id="1_obxe8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toibi"]
+atlas = ExtResource("1_obxe8")
+region = Rect2(306, 0, 306, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d2jl"]
+atlas = ExtResource("1_obxe8")
+region = Rect2(612, 0, 306, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qbst"]
+atlas = ExtResource("1_obxe8")
+region = Rect2(0, 113, 306, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7wmr"]
+atlas = ExtResource("1_obxe8")
+region = Rect2(306, 113, 306, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvory"]
+atlas = ExtResource("1_obxe8")
+region = Rect2(612, 113, 306, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t601h"]
+atlas = ExtResource("1_obxe8")
+region = Rect2(0, 226, 306, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkdri"]
+atlas = ExtResource("1_obxe8")
+region = Rect2(306, 226, 306, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54hxj"]
+atlas = ExtResource("1_obxe8")
+region = Rect2(612, 226, 306, 113)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sebm3"]
+atlas = ExtResource("1_obxe8")
+region = Rect2(0, 0, 306, 113)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3bv8w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toibi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d2jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qbst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7wmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvory")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t601h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkdri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54hxj")
+}],
+"loop": false,
+"name": &"Rotate1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toibi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d2jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qbst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7wmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvory")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t601h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkdri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54hxj")
+}],
+"loop": false,
+"name": &"Rotate2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toibi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d2jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qbst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7wmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvory")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t601h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkdri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54hxj")
+}],
+"loop": false,
+"name": &"Rotate3",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sebm3")
+}],
+"loop": true,
+"name": &"Static1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sebm3")
+}],
+"loop": true,
+"name": &"Static2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sebm3")
+}],
+"loop": true,
+"name": &"Static3",
+"speed": 10.0
+}]
+
+[node name="Clear-r" type="AnimatedSprite2D"]
+visible = false
+texture_filter = 1
+position = Vector2(-50, -1)
+sprite_frames = SubResource("SpriteFrames_3bv8w")
+animation = &"Static1"
+flip_h = true
+metadata/_aseprite_wizard_config_ = {
+"layer": "ClearWheel",
+"o_ex_p": "",
+"o_folder": "res://assets/art/sprites",
+"o_name": "",
+"only_visible": false,
+"slice": "",
+"source": "res://assets/art/sprites/powerCycle.aseprite"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true
+}
+metadata/_aseprite_wizard_source_file_hash_ = "67a1cbae94ff2c6aa7948c8dde14d37d"

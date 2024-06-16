@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://d3auub7xxeoyp"
+path="res://.godot/imported/powerCycle.aseprite-27b04b90372de5ccfa66c02d903eea88.res"
+
+[deps]
+
+source_file="res://assets/art/sprites/powerCycle.aseprite"
+dest_files=["res://.godot/imported/powerCycle.aseprite-27b04b90372de5ccfa66c02d903eea88.res"]
+
+[params]
+

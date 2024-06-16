@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://bedkqoqfxg42m"]
+
+[ext_resource type="Texture2D" uid="uid://xca3o8coib87" path="res://assets/art/tiles/particles/smoke_09.png" id="1_1koqe"]
+[ext_resource type="Script" path="res://scripts/powers/firestorm.gd" id="1_i0pod"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0qoi"]
+radius = 11.0
+height = 54.0
+
+[sub_resource type="Curve" id="Curve_cgs88"]
+min_value = -15.0
+max_value = 15.0
+_data = [Vector2(0, -15), 0.0, 0.0, 0, 0, Vector2(1, 14.446), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_7rfdu"]
+min_value = -5.0
+max_value = 5.0
+_data = [Vector2(0, -0.078125), 0.0, 0.0, 0, 0, Vector2(0.986014, 5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_f4tub"]
+_data = [Vector2(0, 0.131868), 0.0, 0.0, 0, 0, Vector2(1, 0.956044), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_tv0ui"]
+offsets = PackedFloat32Array(0.22, 0.38, 0.46, 0.606667, 0.733333)
+colors = PackedColorArray(0, 0, 0, 1, 0.666667, 0.666667, 0.00522876, 1, 1, 1, 0.00784314, 1, 1, 1, 0.647944, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_h7t8t"]
+offsets = PackedFloat32Array(0, 0.133333, 0.24, 0.313333, 0.393333, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.555556, 0.555556, 0, 1, 1, 1, 0, 1, 1, 1, 0.0789474, 1, 1, 1, 0.186255, 1, 1, 1, 0.329331, 1, 1, 1, 1, 1)
+
+[node name="Firestorm" type="Area2D"]
+top_level = true
+scale = Vector2(3, 3)
+script = ExtResource("1_i0pod")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -27)
+shape = SubResource("CapsuleShape2D_l0qoi")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 23
+texture = ExtResource("1_1koqe")
+gravity = Vector2(0, -300)
+angular_velocity_min = 200.0
+angular_velocity_max = 250.0
+scale_amount_min = 0.03
+scale_amount_max = 0.03
+scale_amount_curve = SubResource("Curve_cgs88")
+split_scale = true
+scale_curve_x = SubResource("Curve_7rfdu")
+scale_curve_y = SubResource("Curve_f4tub")
+color = Color(1, 0.172549, 0.203922, 1)
+color_ramp = SubResource("Gradient_tv0ui")
+color_initial_ramp = SubResource("Gradient_h7t8t")
+hue_variation_min = -0.35
+hue_variation_max = -0.25
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

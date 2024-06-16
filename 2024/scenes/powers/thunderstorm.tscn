@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnob4qahivt1j"]
+
+[ext_resource type="Texture2D" uid="uid://bh84vf4bplnqy" path="res://assets/art/tiles/particles/spark_05.png" id="1_36u1x"]
+[ext_resource type="Script" path="res://scripts/powers/thunderstorm.gd" id="1_v2il2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qx8oq"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_ye6fe"]
+offsets = PackedFloat32Array(0, 0.0133333, 0.0466667, 0.473333, 0.953333)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6g308"]
+radius = 6.32456
+
+[node name="Thunderstorm" type="Area2D"]
+top_level = true
+scale = Vector2(3, 3)
+script = ExtResource("1_v2il2")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_qx8oq")
+position = Vector2(1.33333, -25.6667)
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("1_36u1x")
+gravity = Vector2(0, 0)
+scale_amount_min = 0.3
+scale_amount_max = 0.3
+color_ramp = SubResource("Gradient_ye6fe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6g308")
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]
