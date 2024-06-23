@@ -8,6 +8,8 @@ size = Vector2(207, 92)
 
 [node name="Sandstorm" type="Area2D"]
 top_level = true
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_y7ppr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

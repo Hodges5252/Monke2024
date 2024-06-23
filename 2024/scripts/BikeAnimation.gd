@@ -6,10 +6,114 @@ extends StaticBody2D
 var codeArray = ["(1, 1, 2)", "(1, 1, 3)", "(1, 1, 4)", "(1, 2, 2)", "(1, 2, 3)", "(1, 2, 4)", "(1, 3, 3)", "(1, 3, 4)", '(1, 4, 4)', "(2, 2, 3)", "(2, 2, 4)", "(2, 3, 3)", "(2, 3, 4)", "(2, 4, 4)", "(3, 3, 4)", "(3, 4, 4)", "clear"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	PowerManager.left_can_spin = true
+	PowerManager.right_can_spin = true
 	randomize()
-	switch_wheel_left(start_left)
-	switch_wheel_right(start_right)
+	if PowerManager.left_code.size() != PowerManager.right_code.size() or PowerManager.left_code.size() !=3:
+		switch_wheel_left(start_left)
+		switch_wheel_right(start_right)
+	else:
+		swap_wheels()
 
+func swap_wheels():
+	var left = PowerManager.left_code
+	var right = PowerManager.right_code
+	
+	#(1, 1, 2)
+	if left.has(1) and left.has(2) and left.count(1) == 2:
+		switch_wheel_left("(1, 1, 2)")
+	if right.has(1) and right.has(2) and right.count(1) == 2:
+		switch_wheel_right("(1, 1, 2)")
+	 
+	#(1, 1, 3)
+	if left.has(1) and left.has(3) and left.count(1) == 2:
+		switch_wheel_left("(1, 1, 3)")
+	if right.has(1) and right.has(3) and right.count(1) == 2:
+		switch_wheel_right("(1, 1, 3)")
+	
+	#(1, 1, 4)
+	if left.has(1) and left.has(4) and left.count(1) == 2:
+		switch_wheel_left("(1, 1, 4)")
+	if right.has(1) and right.has(4) and right.count(1) == 2:
+		switch_wheel_right("(1, 1, 4)")
+	
+	#(1, 2, 2)
+	if left.has(1) and left.has(2) and left.count(2) == 2:
+		switch_wheel_left("(1, 2, 2)")
+	if right.has(1) and right.has(2) and right.count(2) == 2:
+		switch_wheel_right("(1, 2, 2)")
+	
+	#(1, 2, 3)
+	if left.has(1) and left.has(2) and left.has(3):
+		switch_wheel_left("(1, 2, 3)")
+	if right.has(1) and right.has(2) and right.has(3):
+		switch_wheel_right("(1, 2, 3)")
+	
+	#(1, 2, 4)
+	if left.has(1) and left.has(2) and left.has(4):
+		switch_wheel_left("(1, 2, 4)")
+	if right.has(1) and right.has(2) and right.has(4):
+		switch_wheel_right("(1, 2, 4)")
+	
+	#(1, 3, 3)
+	if left.has(1) and left.has(3) and left.count(3) == 2:
+		switch_wheel_left("(1, 3, 3)")
+	if right.has(1) and right.has(3) and right.count(3) == 2:
+		switch_wheel_right("(1, 3, 3)")
+	
+	#(1, 3, 4)
+	if left.has(1) and left.has(3) and left.has(4):
+		switch_wheel_left("(1, 3, 4)")
+	if right.has(1) and right.has(3) and right.has(4):
+		switch_wheel_right("(1, 3, 4)")
+	
+	#(1, 4, 4)
+	if left.has(1) and left.has(4) and left.count(4) == 2:
+		switch_wheel_left("(1, 4, 4)")
+	if right.has(1) and right.has(4) and right.count(4) == 2:
+		switch_wheel_right("(1, 4, 4)")
+	
+	#(2, 2, 3)
+	if left.has(3) and left.has(2) and left.count(2) == 2:
+		switch_wheel_left("(2, 2, 3)")
+	if right.has(3) and right.has(2) and right.count(2) == 2:
+		switch_wheel_right("(2, 2, 3)")
+	
+	#(2, 2, 4)
+	if left.has(4) and left.has(2) and left.count(2) == 2:
+		switch_wheel_left("(2, 2, 4)")
+	if right.has(4) and right.has(2) and right.count(2) == 2:
+		switch_wheel_right("(2, 2, 4)")
+	
+	#(2, 3, 3)
+	if left.has(2) and left.has(3) and left.count(3) == 2:
+		switch_wheel_left("(2, 3, 3)")
+	if right.has(2) and right.has(3) and right.count(3) == 2:
+		switch_wheel_right("(2, 3, 3)")
+	
+	#(2, 3, 4)
+	if left.has(2) and left.has(3) and left.has(4):
+		switch_wheel_left("(2, 3, 4)")
+	if right.has(2) and right.has(3) and right.has(4):
+		switch_wheel_right("(2, 3, 4)")
+	
+	#(2, 4, 4)
+	if left.has(2) and left.has(4) and left.count(4) == 2:
+		switch_wheel_left("(2, 4, 4)")
+	if right.has(2) and right.has(4) and right.count(4) == 2:
+		switch_wheel_right("(2, 4, 4)")
+	
+	#(3, 3, 4)
+	if left.has(4) and left.has(3) and left.count(3) == 2:
+		switch_wheel_left("(3, 3, 4)")
+	if right.has(4) and right.has(3) and right.count(3) == 2:
+		switch_wheel_right("(3, 3, 4)")
+	
+	#(3, 4, 4)
+	if left.has(3) and left.has(4) and left.count(4) == 2:
+		switch_wheel_left("(3, 4, 4)")
+	if right.has(3) and right.has(4) and right.count(4) == 2:
+		switch_wheel_right("(3, 4, 4)")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

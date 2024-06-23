@@ -20,6 +20,9 @@ var right_respin = false
 var left_wheel : AnimatedSprite2D
 var right_wheel : AnimatedSprite2D
 
+var left_code = []
+var right_code = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

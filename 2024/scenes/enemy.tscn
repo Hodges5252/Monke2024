@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cibluhayl1kmn"]
+[gd_scene load_steps=14 format=3 uid="uid://cibluhayl1kmn"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_kx6nk"]
 [ext_resource type="Texture2D" uid="uid://cbjunbufq88k5" path="res://assets/art/sprites/MutilatedStumbler.png" id="2_hxw7g"]
@@ -45,7 +45,49 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8va7f"]
 radius = 123.004
 
+[sub_resource type="Animation" id="Animation_p2jjr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vwseb"]
+resource_name = "damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.4, 0.8),
+"transitions": PackedFloat32Array(1.07177, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ofmgr"]
+_data = {
+"RESET": SubResource("Animation_p2jjr"),
+"damage": SubResource("Animation_vwseb")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_anflh"]
+radius = 8.06226
+
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
+platform_floor_layers = 0
 script = ExtResource("1_kx6nk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -63,5 +105,33 @@ shape = SubResource("CircleShape2D_lkrep")
 visible = false
 shape = SubResource("CircleShape2D_8va7f")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ofmgr")
+}
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_anflh")
+
+[node name="oneSec" type="Timer" parent="."]
+autostart = true
+
+[node name="halfSec" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="quartSec" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]
+[connection signal="timeout" from="oneSec" to="." method="_on_one_sec_timeout"]
+[connection signal="timeout" from="halfSec" to="." method="_on_half_sec_timeout"]
+[connection signal="timeout" from="quartSec" to="." method="_on_quart_sec_timeout"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MonkeyJam2024"
-run/main_scene="res://scenes/game_world.tscn"
+run/main_scene="res://scenes/power_select.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://assets/art/sprites/icon.svg"
 

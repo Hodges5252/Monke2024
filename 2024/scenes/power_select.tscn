@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://5ernhpx07tg"]
+[gd_scene load_steps=9 format=3 uid="uid://5ernhpx07tg"]
 
 [ext_resource type="Script" path="res://PowerSelect.gd" id="1_ul0wg"]
 [ext_resource type="PackedScene" uid="uid://c2mlddwfiy1po" path="res://scenes/power_cycle.tscn" id="2_upplo"]
+[ext_resource type="Texture2D" uid="uid://c286uh5vo24s3" path="res://assets/tile_0077.png" id="3_hd3pe"]
+[ext_resource type="Texture2D" uid="uid://p4n2itmcjgoc" path="res://assets/tile_0078.png" id="4_1bv3r"]
+[ext_resource type="Texture2D" uid="uid://msdsyccof7iw" path="res://assets/tile_0235.png" id="5_xk1ty"]
+[ext_resource type="Texture2D" uid="uid://ohygxyfr8fic" path="res://assets/tile_0236.png" id="6_481g7"]
+[ext_resource type="Texture2D" uid="uid://c2ccesjw0uij7" path="res://assets/tile_0237.png" id="7_p25jk"]
+[ext_resource type="AudioStream" uid="uid://iogc63rxdhsd" path="res://8Bit - Liza Loop.wav" id="8_gx8vl"]
 
 [node name="PowerSelect" type="Node2D"]
 script = ExtResource("1_ul0wg")
@@ -12,64 +18,114 @@ offset_bottom = 648.0
 color = Color(1.92523e-07, 0.651467, 0.651775, 1)
 
 [node name="PowerCycle" parent="." instance=ExtResource("2_upplo")]
-position = Vector2(572, 169)
+position = Vector2(575, 276)
 scale = Vector2(3, 3)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1151.0
+offset_bottom = 650.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.5
+offset_right = 49.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 101
+text = "Ability Select
+"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.5
+offset_top = 67.0
+offset_right = 154.5
+offset_bottom = 308.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Left Wheel
+"
 
 [node name="Left" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
 
 [node name="Left1" type="HBoxContainer" parent="Control/VBoxContainer/Left"]
 layout_mode = 2
+size_flags_horizontal = 2
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/Left/Left1"]
 layout_mode = 2
+size_flags_horizontal = 6
 
 [node name="Left2" type="HBoxContainer" parent="Control/VBoxContainer/Left"]
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 8
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/Left/Left2"]
 layout_mode = 2
+size_flags_horizontal = 6
 
 [node name="Left3" type="HBoxContainer" parent="Control/VBoxContainer/Left"]
 layout_mode = 2
+size_flags_horizontal = 10
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/Left/Left3"]
 layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Right Wheel
+"
 
 [node name="Right" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
 
 [node name="Right1" type="HBoxContainer" parent="Control/VBoxContainer/Right"]
 layout_mode = 2
+size_flags_horizontal = 2
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/Right/Right1"]
 layout_mode = 2
+size_flags_horizontal = 6
 
 [node name="Right2" type="HBoxContainer" parent="Control/VBoxContainer/Right"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/Right/Right2"]
 layout_mode = 2
+size_flags_horizontal = 6
 
 [node name="Right3" type="HBoxContainer" parent="Control/VBoxContainer/Right"]
 layout_mode = 2
+size_flags_horizontal = 10
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/Right/Right3"]
 layout_mode = 2
+size_flags_horizontal = 6
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="LeftWheel" type="OptionButton" parent="Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -77,5 +133,80 @@ layout_mode = 2
 [node name="RightWheel" type="OptionButton" parent="Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Reset" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Reset"
+
+[node name="Submit" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+disabled = true
+text = "Submit
+"
+
+[node name="Start" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "Play Game"
+
+[node name="LeftPower" type="Label" parent="."]
+visible = false
+offset_left = 272.0
+offset_top = 164.0
+offset_right = 379.0
+offset_bottom = 187.0
+text = "Left Element: "
+
+[node name="Move" type="Label" parent="."]
+visible = false
+offset_left = 501.0
+offset_top = 341.0
+offset_right = 608.0
+offset_bottom = 364.0
+text = "Move: "
+
+[node name="RightPower" type="Label" parent="."]
+visible = false
+offset_left = 731.0
+offset_top = 164.0
+offset_right = 848.0
+offset_bottom = 187.0
+text = "Right Element: "
+
+[node name="Tile0077" type="Sprite2D" parent="."]
+position = Vector2(295, 297)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hd3pe")
+
+[node name="Tile0078" type="Sprite2D" parent="."]
+position = Vector2(857, 298)
+scale = Vector2(2, 2)
+texture = ExtResource("4_1bv3r")
+
+[node name="Tile0235" type="Sprite2D" parent="."]
+position = Vector2(545, 375)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_xk1ty")
+
+[node name="Tile0236" type="Sprite2D" parent="."]
+position = Vector2(569, 375)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_481g7")
+
+[node name="Tile0237" type="Sprite2D" parent="."]
+position = Vector2(593, 375)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_p25jk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_gx8vl")
+
 [connection signal="item_selected" from="Control/VBoxContainer/HBoxContainer/LeftWheel" to="." method="_on_left_wheel_item_selected"]
 [connection signal="item_selected" from="Control/VBoxContainer/HBoxContainer/RightWheel" to="." method="_on_right_wheel_item_selected"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/Submit" to="." method="_on_submit_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Start" to="." method="_on_start_pressed"]

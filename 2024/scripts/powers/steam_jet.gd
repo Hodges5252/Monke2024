@@ -15,3 +15,6 @@ func _process(delta):
 
 func _on_timer_timeout():
 	queue_free()
+
+func damage_type():
+	return "steam"

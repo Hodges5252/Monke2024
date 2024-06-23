@@ -14,3 +14,6 @@ func _process(delta):
 
 func _on_cpu_particles_2d_finished():
 	queue_free()
+
+func damage_type():
+	return "gust"

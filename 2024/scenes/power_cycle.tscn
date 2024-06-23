@@ -7153,8 +7153,6 @@ animations = [{
 
 [node name="PowerCycle" type="StaticBody2D"]
 script = ExtResource("1_d0rt0")
-start_left = "(1, 2, 4)"
-start_right = "(1, 2, 3)"
 
 [node name="(1, 2, 3)-l" type="AnimatedSprite2D" parent="."]
 visible = false

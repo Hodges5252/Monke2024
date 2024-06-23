@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn0c6on6mr20t"]
+[gd_scene load_steps=8 format=3 uid="uid://bn0c6on6mr20t"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_lu3gh"]
 [ext_resource type="PackedScene" uid="uid://uwesqykdudg8" path="res://scenes/player/character_animation.tscn" id="2_c2kuo"]
@@ -6,6 +6,23 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aigi7"]
 size = Vector2(8, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_js2iy"]
+radius = 8.06226
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knt4w"]
+bg_color = Color(0.169245, 0.169245, 0.169245, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eq67m"]
+bg_color = Color(0.755615, 0.0108288, 0.221414, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_lu3gh")
@@ -18,3 +35,22 @@ frame_progress = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_aigi7")
+
+[node name="hitbox" type="Area2D" parent="."]
+position = Vector2(-13, 9)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(13, -8)
+shape = SubResource("CircleShape2D_js2iy")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -13.0
+offset_top = 9.0
+offset_right = 13.0
+offset_bottom = 14.0
+theme_override_styles/background = SubResource("StyleBoxFlat_knt4w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eq67m")
+value = 100.0
+show_percentage = false
